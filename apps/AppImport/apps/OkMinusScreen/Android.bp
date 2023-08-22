@@ -1,0 +1,10 @@
+android_app_import {
+    // Module name should match apk name to be installed
+    name: "minusscreen",
+    privileged: false,
+    certificate: "platform",
+    apk: "minusscreen.apk",    
+    dex_preopt: {
+        enabled: false,
+    },
+}

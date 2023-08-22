@@ -1,0 +1,3 @@
+/system/bin/pccall           u:object_r:okcarte_exec:s0
+/dev/hidg0      u:object_r:hidg_device:s0
+/dev/okcar      u:object_r:okcarapi_device:s0

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Default for Settings.Global.DEVICE_NAME $1=MODEL-->
+    <!-- <string name="def_device_name_simple" translatable="false">OnePlus 9 Pro</string> -->
+    
+    <bool name="def_dim_screen">false</bool>
+    <integer name="def_screen_off_timeout">2147483647</integer>
+    <bool name="def_lockscreen_disabled">true</bool>
+
+    <integer name="def_user_rotation">3</integer>
+    <!-- If Enable freeform windows -->
+    <integer name="def_enableFreeformSupport">1</integer>
+    <!-- If Force activities to be resizable -->
+    <integer name="def_forceResizableActivities">1</integer>
+
+    <!-- Default for Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED, 1==on -->
+    <integer name="def_heads_up_enabled">0</integer>
+</resources>

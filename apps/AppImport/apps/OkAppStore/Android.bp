@@ -1,0 +1,17 @@
+android_app_import {
+    // Module name should match apk name to be installed
+    name: "okappstore",
+    privileged: true,
+    certificate: "platform",
+    apk: "okappstore.apk",    
+    dex_preopt: {
+        enabled: false,
+    },
+    required: ["privapp-permissions-okcar-okappstore.xml"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-okcar-okappstore.xml",
+    sub_dir: "permissions",
+    src: "privapp-permissions-okcar-okappstore.xml",
+}

@@ -1,0 +1,46 @@
+type okcarte, domain, coredomain;
+type okcarte_exec, exec_type, system_file_type, file_type;
+type hidg_device, dev_type, fs_type;
+type okcarapi_device, dev_type, fs_type;
+
+init_daemon_domain(okcarte);
+
+# ifconfig; ip/route operations;
+allow okcarte shell_exec:file rx_file_perms;
+allow okcarte system_file:file execute_no_trans;
+allow okcarte toolbox_exec:file { execute execute_no_trans getattr open read map };
+allow okcarte self:capability { fowner chown net_admin net_raw sys_module };
+allow okcarte self:netlink_route_socket { setopt getattr write read bind create nlmsg_write nlmsg_read };
+allow okcarte self:netlink_xfrm_socket { setopt getattr write read bind create nlmsg_write nlmsg_read };
+
+allow okcarte net_data_file:file r_file_perms;
+allow okcarte net_data_file:dir search;
+allow okcarte dnsproxyd_socket:sock_file write;
+allow okcarte self:udp_socket { create read ioctl setattr getattr setopt getopt write connect bind listen accept };
+allow okcarte self:tcp_socket { create read ioctl setattr getattr setopt getopt write connect bind listen accept };
+allow okcarte self:{ icmp_socket } create_socket_perms;
+allow okcarte node:tcp_socket node_bind;
+allow okcarte node:udp_socket node_bind;
+allow okcarte port:tcp_socket { name_bind name_connect };
+allow okcarte port:udp_socket name_bind;
+allow okcarte proc_net:file { read getattr open };
+allowxperm okcarte self:socket ioctl { SIOCETHTOOL };
+allowxperm okcarte self:udp_socket ioctl priv_sock_ioctls;
+
+# for okcar kernal api
+allow system_app okcarapi_device:chr_file rw_file_perms;
+allow init okcarapi_device:chr_file rw_file_perms;
+
+# for /dev/hidg0 rx
+allow system_app hidg_device:chr_file rw_file_perms;
+
+# for app /dev/bus/usb
+allow system_app usb_device:dir read;
+
+# for init set service.okcar.enable
+allow vendor_init system_prop:property_service set;
+
+# for app set vendor.pc.pccall
+allow system_app vendor_pccall_prop:property_service set;
+allow vendor_init vendor_pccall_prop:property_service set;
+allow system_server vendor_pccall_prop:property_service set;

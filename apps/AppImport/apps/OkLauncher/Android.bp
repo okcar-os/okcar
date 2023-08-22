@@ -1,0 +1,10 @@
+android_app_import {
+    // Module name should match apk name to be installed
+    name: "oklauncher",
+    privileged: false,
+    certificate: "platform",
+    apk: "oklauncher.apk",    
+    dex_preopt: {
+        enabled: false,
+    },
+}

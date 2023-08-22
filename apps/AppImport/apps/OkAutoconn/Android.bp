@@ -1,0 +1,17 @@
+android_app_import {
+    // Module name should match apk name to be installed
+    name: "autoconn",
+    privileged: true,
+    certificate: "platform",
+    apk: "autoconn.apk",    
+    dex_preopt: {
+        enabled: false,
+    },
+    required: ["privapp-permissions-okcar-autoconn.xml"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-okcar-autoconn.xml",
+    sub_dir: "permissions",
+    src: "privapp-permissions-okcar-autoconn.xml",
+}
