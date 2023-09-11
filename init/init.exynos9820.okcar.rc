@@ -5,7 +5,7 @@ on boot
 
 
 on property:sys.usb.config=okcar
-    setprop service.okcar.enable 1
+    setprop service.okcar.enable 0
     write /config/usb_gadget/g1/bDeviceClass 0
     write /config/usb_gadget/g1/bDeviceSubClass 0
     write /config/usb_gadget/g1/bDeviceProtocol 0
@@ -15,9 +15,9 @@ on property:sys.usb.config=okcar
     write /config/usb_gadget/g1/bcdUSB 0x0200
     write /config/usb_gadget/g1/strings/0x409/product "iPhone"
     write /config/usb_gadget/g1/strings/0x409/manufacturer "Apple Inc."
-    write /config/usb_gadget/g1/strings/0x409/serialnumber "d9ccb8ebdb3e6d6db237d513894b43390e0afec1"    
+    write /config/usb_gadget/g1/strings/0x409/serialnumber "d9ccb8ebdb3e6d6db237d513894b43390e0afec1"
     write /config/usb_gadget/g1/configs/b.1/bmAttributes 0xC0
-    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "PTP"    
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "PTP"
     write /config/usb_gadget/g1/configs/b.2/MaxPower 500
     write /config/usb_gadget/g1/configs/b.2/bmAttributes 0xC0
     write /config/usb_gadget/g1/configs/b.2/strings/0x409/configuration "iPod USB Interface"
@@ -34,8 +34,7 @@ on property:sys.usb.config=okcar
     symlink /config/usb_gadget/g1/functions/okcar_mobile.gs0 /config/usb_gadget/g1/configs/b.3/okcar_mobile.gs0
     symlink /config/usb_gadget/g1/functions/okcar_image.gs2 /config/usb_gadget/g1/configs/b.4/okcar_image.gs2
     symlink /config/usb_gadget/g1/functions/okcar_mobile.gs1 /config/usb_gadget/g1/configs/b.4/okcar_mobile.gs1
-    symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/okcar_usb_ethernet.gs0   
-    write /sys/class/android_usb/android0/enable 0
+    symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/okcar_usb_ethernet.gs0
     write /sys/class/android_usb/android0/functions okcar_image&1,audio_source&2,hid&2,okcar_image&3,okcar_mobile&3,okcar_image&4,okcar_mobile&4,okcar_usb_ethernet&4
     write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1

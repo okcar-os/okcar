@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <permissions>
-    <privapp-permissions package="com.okcar.okappstore">        
+    <privapp-permissions package="com.okcar.okappstore">
         <permission name="android.permission.INTERNET"/>
         <permission name="android.permission.READ_PHONE_STATE"/>
         <permission name="android.permission.ACCESS_NETWORK_STATE"/>
