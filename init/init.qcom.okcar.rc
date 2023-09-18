@@ -1,50 +1,3 @@
-on property:sys.usb.config=okcar,adb && property:sys.usb.configfs=1
-    setprop service.okcar.enable 1
-    rm /config/usb_gadget/g1/configs/b.1/f1
-    rm /config/usb_gadget/g1/configs/b.1/f2
-    rm /config/usb_gadget/g1/configs/b.1/f3
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    write /config/usb_gadget/g1/bDeviceClass 0
-    write /config/usb_gadget/g1/bDeviceSubClass 0
-    write /config/usb_gadget/g1/bDeviceProtocol 0
-    write /config/usb_gadget/g1/idVendor 0x05AC
-    write /config/usb_gadget/g1/idProduct 0x12A8
-    write /config/usb_gadget/g1/bcdDevice 0x1003
-    write /config/usb_gadget/g1/bcdUSB 0x0200
-    write /config/usb_gadget/g1/strings/0x409/product "iPhone"
-    write /config/usb_gadget/g1/strings/0x409/manufacturer "Apple Inc."
-    write /config/usb_gadget/g1/strings/0x409/serialnumber "d9ccb8ebdb3e6d6db237d513894b43390e0afec1"
-    mkdir /config/usb_gadget/g1/configs/b.1
-    write /config/usb_gadget/g1/configs/b.1/bmAttributes 0xC0
-    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "PTP"
-    symlink /config/usb_gadget/g1/functions/okcar_image.gs0 /config/usb_gadget/g1/configs/b.1/f1
-    mkdir /config/usb_gadget/g1/configs/b.2
-    mkdir /config/usb_gadget/g1/configs/b.2/strings/0x409
-    write /config/usb_gadget/g1/configs/b.2/MaxPower 500
-    write /config/usb_gadget/g1/configs/b.2/bmAttributes 0xC0
-    write /config/usb_gadget/g1/configs/b.2/strings/0x409/configuration "iPod USB Interface"
-    symlink /config/usb_gadget/g1/functions/audio_source.gs3 /config/usb_gadget/g1/configs/b.2/f1
-    symlink /config/usb_gadget/g1/functions/hid.gs0 /config/usb_gadget/g1/configs/b.2/f2
-    mkdir /config/usb_gadget/g1/configs/b.3
-    mkdir /config/usb_gadget/g1/configs/b.3/strings/0x409
-    write /config/usb_gadget/g1/configs/b.3/MaxPower 500
-    write /config/usb_gadget/g1/configs/b.3/bmAttributes 0xC0
-    write /config/usb_gadget/g1/configs/b.3/strings/0x409/configuration "PTP + Apple Mobile Device"
-    symlink /config/usb_gadget/g1/functions/okcar_image.gs1 /config/usb_gadget/g1/configs/b.3/f1
-    symlink /config/usb_gadget/g1/functions/okcar_mobile.gs0 /config/usb_gadget/g1/configs/b.3/f2
-    mkdir /config/usb_gadget/g1/configs/b.4
-    mkdir /config/usb_gadget/g1/configs/b.4/strings/0x409
-    write /config/usb_gadget/g1/configs/b.4/MaxPower 500
-    write /config/usb_gadget/g1/configs/b.4/bmAttributes 0xC0
-    write /config/usb_gadget/g1/configs/b.4/strings/0x409/configuration "PTP + Apple Mobile Device + Apple USB Ethernet"
-    symlink /config/usb_gadget/g1/functions/okcar_image.gs2 /config/usb_gadget/g1/configs/b.4/f1
-    symlink /config/usb_gadget/g1/functions/okcar_mobile.gs1 /config/usb_gadget/g1/configs/b.4/f2
-    symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/f3
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-    setprop sys.usb.state ${sys.usb.config}
-
 on property:sys.usb.config=okcar && property:sys.usb.configfs=1
     setprop service.okcar.enable 1
     rm /config/usb_gadget/g1/configs/b.1/f1
@@ -91,4 +44,54 @@ on property:sys.usb.config=okcar && property:sys.usb.configfs=1
     symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/f3
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=okcar,adb && property:sys.usb.configfs=1
+    setprop service.okcar.enable 1
+    setprop service.adb.tcp.port 5555
+    start adbd    
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    write /config/usb_gadget/g1/bDeviceClass 0
+    write /config/usb_gadget/g1/bDeviceSubClass 0
+    write /config/usb_gadget/g1/bDeviceProtocol 0
+    write /config/usb_gadget/g1/idVendor 0x05AC
+    write /config/usb_gadget/g1/idProduct 0x12A8
+    write /config/usb_gadget/g1/bcdDevice 0x1003
+    write /config/usb_gadget/g1/bcdUSB 0x0200
+    write /config/usb_gadget/g1/strings/0x409/product "iPhone"
+    write /config/usb_gadget/g1/strings/0x409/manufacturer "Apple Inc."
+    write /config/usb_gadget/g1/strings/0x409/serialnumber "d9ccb8ebdb3e6d6db237d513894b43390e0afec1"
+    mkdir /config/usb_gadget/g1/configs/b.1
+    write /config/usb_gadget/g1/configs/b.1/bmAttributes 0xC0
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "PTP"
+    symlink /config/usb_gadget/g1/functions/okcar_image.gs0 /config/usb_gadget/g1/configs/b.1/f1
+    mkdir /config/usb_gadget/g1/configs/b.2
+    mkdir /config/usb_gadget/g1/configs/b.2/strings/0x409
+    write /config/usb_gadget/g1/configs/b.2/MaxPower 500
+    write /config/usb_gadget/g1/configs/b.2/bmAttributes 0xC0
+    write /config/usb_gadget/g1/configs/b.2/strings/0x409/configuration "iPod USB Interface"
+    symlink /config/usb_gadget/g1/functions/audio_source.gs3 /config/usb_gadget/g1/configs/b.2/f1
+    symlink /config/usb_gadget/g1/functions/hid.gs0 /config/usb_gadget/g1/configs/b.2/f2
+    mkdir /config/usb_gadget/g1/configs/b.3
+    mkdir /config/usb_gadget/g1/configs/b.3/strings/0x409
+    write /config/usb_gadget/g1/configs/b.3/MaxPower 500
+    write /config/usb_gadget/g1/configs/b.3/bmAttributes 0xC0
+    write /config/usb_gadget/g1/configs/b.3/strings/0x409/configuration "PTP + Apple Mobile Device"
+    symlink /config/usb_gadget/g1/functions/okcar_image.gs1 /config/usb_gadget/g1/configs/b.3/f1
+    symlink /config/usb_gadget/g1/functions/okcar_mobile.gs0 /config/usb_gadget/g1/configs/b.3/f2
+    mkdir /config/usb_gadget/g1/configs/b.4
+    mkdir /config/usb_gadget/g1/configs/b.4/strings/0x409
+    write /config/usb_gadget/g1/configs/b.4/MaxPower 500
+    write /config/usb_gadget/g1/configs/b.4/bmAttributes 0xC0
+    write /config/usb_gadget/g1/configs/b.4/strings/0x409/configuration "PTP + Apple Mobile Device + Apple USB Ethernet"
+    symlink /config/usb_gadget/g1/functions/okcar_image.gs2 /config/usb_gadget/g1/configs/b.4/f1
+    symlink /config/usb_gadget/g1/functions/okcar_mobile.gs1 /config/usb_gadget/g1/configs/b.4/f2
+    symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/f3
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
 
