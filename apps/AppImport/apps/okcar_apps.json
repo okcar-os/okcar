@@ -1,26 +1,27 @@
 [
     {
-        "name": "okappstore",
-        "path": "OkAppStore",
-        "url": "https://cdn.okcaros.com/apps/prebuilds/okappstore_10_0919_01_36.apk",
-        "hash": "e39aa056aea32346cce82ea207fccec2d6e2cb18e140adf511458d988fc164b2"
+      "name": "autoconn",
+      "path": "OkAutoconn",
+      "url": "https://cdn.okcaros.com/apps/prebuilds/autoconn_280_0926_03_54.apk",
+      "hash": "700446ecd891fa33ae5ce4c45b6b2a7dd584ac4b182c03d6d9e7bd385d5a00a2"
     },
     {
-        "name": "autoconn",
-        "path": "OkAutoconn",
-        "url": "https://cdn.okcaros.com/apps/prebuilds/autoconn_270_0919_01_35.apk",
-        "hash": "404eed02fdc50402ae926001cafa10a57b76ebc89228215a67eda3f44c335a43"
+      "name": "minusscreen",
+      "path": "OkMinusScreen",
+      "url": "https://cdn.okcaros.com/apps/prebuilds/minusscreen_3_0926_03_55.apk",
+      "hash": "66d3c0460e263411bc573a5b6bd95cc92ffa784a6993241ef10282685039674c"
     },
     {
-        "name": "oklauncher",
-        "path": "OkLauncher",
-        "url": "https://cdn.okcaros.com/apps/prebuilds/oklauncher_12010005_0919_01_36.apk",
-        "hash": "0f0593068a54f863ab2bf7edfd9e93f2de804c9890f05a7d8c3a7683e9c0587d"
-    }, 
+      "name": "okappstore",
+      "path": "OkAppStore",
+      "url": "https://cdn.okcaros.com/apps/prebuilds/okappstore_12_0926_03_55.apk",
+      "hash": "b84d9c9b595d08ce7f7396f405f05a2d5ebf3301d210f39a8cfb8ec23c1f67b1"
+    },
     {
-        "name": "minusscreen",
-        "path": "OkMinusScreen",
-        "url": "https://cdn.okcaros.com/apps/prebuilds/minusscreen_3_0919_01_35.apk",
-        "hash": "dfaa06ece59f63f65bff486560d866769fec55c06e2e4197b86aaf590b854466"
+      "name": "oklauncher",
+      "path": "OkLauncher",
+      "url": "https://cdn.okcaros.com/apps/prebuilds/oklauncher_12010005_0926_03_55.apk",
+      "hash": "270dcbe2a8e74872f068a22a1923c10bc56538683f28ba50290e67ebdc3f4c9b"
     }
-]
+  ]
+  
