@@ -6,7 +6,10 @@ PRODUCT_PACKAGES += \
     minusscreen \
     OkcarFrameworksResTarget \
     OkcarSettingsProviderResTarget \
-    OkcarSystemUIResTarget
+    OkcarSystemUIResTarget \
+    NavigationBarModeGesturalOkCar \
+    NavigationBarMode3ButtonOverlay0
+
 
 
 PRODUCT_COPY_FILES += \
