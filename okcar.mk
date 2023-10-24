@@ -19,6 +19,9 @@ PRODUCT_COPY_FILES += \
     okcar/init/okcar.hidreport.bin:vendor/etc/init/hw/okcar.hidreport.bin
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    okcar/build/target/product/security/okcar
+    okcar/build/target/product/security/recovery/okcarprod
+
+PRODUCT_EXTRA_OTA_KEYS += \
+    okcar/build/target/product/security/ota/okcardev
 
 include okcar/sepolicy/sepolicy.mk
