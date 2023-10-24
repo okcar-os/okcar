@@ -12,4 +12,9 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.okcaros.build.version=1.0 \
     ro.okcaros.display.version=$(OKCAR_OS_DISPLAY_VERSION)
 
+# Promoter ID: Promoters can earn certain profits when users make purchases.
+# For more details, please visit: https://u.okcar.com."
+# ADDITIONAL_SYSTEM_PROPERTIES += \
+#     ro.okcaros.promoter.id=223366
+
 $(info "ADDITIONAL_SYSTEM_PROPERTIES:$(ADDITIONAL_SYSTEM_PROPERTIES)")
