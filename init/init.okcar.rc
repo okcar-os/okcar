@@ -28,6 +28,11 @@ service pccall_i1 /system/bin/pccall -i 1
 
 on property:vendor.pc.pccall=n1
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules cdc_ncm
+    chown system system /sys/class/net/usb0/cdc_ncm/min_tx_pkt
+    chown system system /sys/class/net/usb0/cdc_ncm/ndp_to_end
+    chown system system /sys/class/net/usb0/cdc_ncm/rx_max
+    chown system system /sys/class/net/usb0/cdc_ncm/tx_max
+    chown system system /sys/class/net/usb0/cdc_ncm/tx_timer_usecs
     setprop vendor.pc.pccall none
 
 on property:vendor.pc.pccall=n0

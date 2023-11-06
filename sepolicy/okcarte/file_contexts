@@ -1,3 +1,5 @@
 /system/bin/pccall           u:object_r:okcarte_exec:s0
 /dev/hidg0      u:object_r:hidg_device:s0
 /dev/okcar      u:object_r:okcarapi_device:s0
+
+/sys/devices/platform/soc/a600000.ssusb/a600000.dwc3/xhci-hcd.1.auto/usb2/.*/net/usb0/cdc_ncm/.*   u:object_r:sysfs_ncm:s0

@@ -1,0 +1,5 @@
+# Hid
+/dev/hidg0             0660   system       system
+
+# Okcar
+/dev/okcar             0660   system       system
