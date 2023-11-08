@@ -51,3 +51,6 @@ allow system_app sysfs_net:file rw_file_perms;
 allow system_app vendor_sysfs_usb_node:dir r_dir_perms;
 allow system_app vendor_sysfs_usb_node:file rw_file_perms;
 allow system_app sysfs_ncm:file rw_file_perms;
+
+# autoconn /proc/sys/net/core/wmem_max read
+allow system_app { proc_net }:file rw_file_perms;
