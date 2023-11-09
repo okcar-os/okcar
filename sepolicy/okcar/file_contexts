@@ -2,4 +2,4 @@
 /dev/hidg0      u:object_r:hidg_device:s0
 /dev/okcar      u:object_r:okcarapi_device:s0
 
-/sys/devices/platform/soc/a600000.ssusb/a600000.dwc3/.*/net/usb0/cdc_ncm/.*   u:object_r:vendor_sysfs_usb_node:s0
+/sys/devices/.*/net/usb0/cdc_ncm/.*   u:object_r:vendor_sysfs_usb_node:s0

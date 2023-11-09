@@ -1,4 +1,5 @@
-ifneq (,$(filter sdm845 sdm710, $(TARGET_BOARD_PLATFORM)))
+#$(error "=============TARGET_BOARD_PLATFORM:$(TARGET_BOARD_PLATFORM)")
+ifneq (,$(filter sdm845 sdm710 msm8998, $(TARGET_BOARD_PLATFORM)))
     BOARD_VENDOR_SEPOLICY_DIRS += \
         okcar/sepolicy/sdm845
 endif
