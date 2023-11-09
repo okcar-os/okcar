@@ -24,5 +24,3 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 PRODUCT_EXTRA_OTA_KEYS += \
     okcar/build/target/product/security/ota/okcardev
-
-include okcar/sepolicy/sepolicy.mk
