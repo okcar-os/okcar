@@ -1,2 +1,9 @@
+ifneq (,$(filter sdm845 sdm710, $(TARGET_BOARD_PLATFORM)))
+    BOARD_VENDOR_SEPOLICY_DIRS += \
+        okcar/sepolicy/sdm845
+endif
+
 BOARD_VENDOR_SEPOLICY_DIRS += \
-    okcar/sepolicy/okcarte
+    okcar/sepolicy/okcar
+
+#$(error "BOARD_VENDOR_SEPOLICY_DIRS:$(BOARD_VENDOR_SEPOLICY_DIRS) SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS:$(SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS)")
