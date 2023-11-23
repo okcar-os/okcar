@@ -30,8 +30,10 @@ allow init okcarapi_device:chr_file rw_file_perms;
 # for /dev/hidg0 rx
 allow system_app hidg_device:chr_file rw_file_perms;
 
-# for app /dev/bus/usb
-allow system_app usb_device:dir read;
+# for system_app libusb /dev/bus/usb
+allow system_app usb_device:dir r_dir_perms;
+allow system_app usb_device:chr_file rw_file_perms;
+allow system_app vendor_sysfs_usb_node:file rw_file_perms;
 
 # for init set service.okcar.enable
 allow vendor_init system_prop:property_service set;
@@ -45,7 +47,6 @@ allow system_server vendor_pccall_prop:property_service set;
 allow system_app sysfs_net:dir r_dir_perms;
 allow system_app sysfs_net:file rw_file_perms;
 allow system_app vendor_sysfs_usb_node:dir r_dir_perms;
-allow system_app vendor_sysfs_usb_node:file rw_file_perms;
 
 # autoconn /proc/sys/net/core/wmem_max read
 allow system_app { proc_net }:file rw_file_perms;

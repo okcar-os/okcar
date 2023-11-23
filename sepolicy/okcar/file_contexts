@@ -3,3 +3,8 @@
 /dev/okcar      u:object_r:okcarapi_device:s0
 
 /sys/devices/.*/net/usb0/cdc_ncm/.*   u:object_r:vendor_sysfs_usb_node:s0
+/sys/bus/usb/devices  u:object_r:vendor_sysfs_usb_node:s0
+/sys/devices/.*/usb1/.* u:object_r:vendor_sysfs_usb_node:s0
+/sys/devices/.*/usb2/.* u:object_r:vendor_sysfs_usb_node:s0
+/sys/devices/.*/usb3/.* u:object_r:vendor_sysfs_usb_node:s0
+/sys/devices/.*/usb4/.* u:object_r:vendor_sysfs_usb_node:s0

@@ -1,5 +1,10 @@
 # Hid
 /dev/hidg0             0660   system       system
 
-# Okcar
+# Okcar Kernel Driver
 /dev/okcar             0660   system       system
+
+
+# Autoconn UsbControl
+/dev/bus/usb/*     0660  system    usb
+/sys/bus/usb/devices 0660  system    usb
