@@ -1,10 +1,17 @@
 android_app_import {
     // Module name should match apk name to be installed
     name: "minusscreen",
-    privileged: false,
+    privileged: true,
     certificate: "platform",
     apk: "minusscreen.apk",    
     dex_preopt: {
         enabled: false,
     },
+    required: ["privapp-permissions-okcar-minusscreen.xml"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-okcar-minusscreen.xml",
+    sub_dir: "permissions",
+    src: "privapp-permissions-okcar-minusscreen.xml",
 }
