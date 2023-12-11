@@ -1,1 +1,0 @@
-type vendor_sysfs_usb_node, fs_type, sysfs_type;
