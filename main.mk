@@ -23,7 +23,10 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.okcaros.build.device=$(LINEAGE_BUILD) \
     ro.okcaros.build.incremental=$(BUILD_ID) \
     ro.okcaros.build.version=1.0 \
-    ro.okcaros.display.version=$(OKCAR_OS_DISPLAY_VERSION)
+
+ADDITIONAL_VENDOR_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=1 \
+    ro.sf.blurs_are_expensive=1
 
 #    persist.dbg.keep_debugfs_mounted=1
 
