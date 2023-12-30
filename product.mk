@@ -17,7 +17,10 @@ PRODUCT_COPY_FILES += \
     okcar/init/ueventd.okcar.rc:vendor/etc/init/hw/ueventd.okcar.rc
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    okcar/build/target/product/security/recovery/okcarprod
-
-PRODUCT_EXTRA_OTA_KEYS += \
+    okcar/build/target/product/security/recovery/okcarprod \
     okcar/build/target/product/security/ota/okcardev
+
+# okcardev is PUBLIC KEY
+PRODUCT_EXTRA_OTA_KEYS += \
+    okcar/build/target/product/security/ota/okcardev \
+    okcar/build/target/product/security/recovery/okcarprod
