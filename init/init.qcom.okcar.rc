@@ -1,5 +1,6 @@
 on property:sys.usb.config=okcar && property:sys.usb.configfs=1
     setprop service.okcar.enable 1
+    write /sys/kernel/config/usb_gadget/g1/UDC "none"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
     rm /config/usb_gadget/g1/configs/b.1/f3
@@ -45,13 +46,13 @@ on property:sys.usb.config=okcar && property:sys.usb.configfs=1
     symlink /config/usb_gadget/g1/functions/okcar_image.gs2 /config/usb_gadget/g1/configs/b.4/f1
     symlink /config/usb_gadget/g1/functions/okcar_mobile.gs1 /config/usb_gadget/g1/configs/b.4/f2
     symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/f3
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=okcar,adb && property:sys.usb.configfs=1
     setprop service.okcar.enable 1
     setprop service.adb.tcp.port 5555
-    start adbd    
+    start adbd
+    write /sys/kernel/config/usb_gadget/g1/UDC "none"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
     rm /config/usb_gadget/g1/configs/b.1/f3
@@ -97,7 +98,16 @@ on property:sys.usb.config=okcar,adb && property:sys.usb.configfs=1
     symlink /config/usb_gadget/g1/functions/okcar_image.gs2 /config/usb_gadget/g1/configs/b.4/f1
     symlink /config/usb_gadget/g1/functions/okcar_mobile.gs1 /config/usb_gadget/g1/configs/b.4/f2
     symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/f3
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
+on property:sys.usb.config=okcar_usb_none
+    write /config/usb_gadget/g1/UDC "none"
+    setprop sys.usb.state ${sys.usb.config}
 
+on property:vendor.pc.pccall=udc0
+    write /config/usb_gadget/g1/UDC none
+    setprop vendor.pc.pccall none
+
+on property:vendor.pc.pccall=udc1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop vendor.pc.pccall none

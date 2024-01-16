@@ -41,3 +41,7 @@ on property:vendor.pc.pccall=n0
 
 on property:sys.usb.config=none
     setprop service.okcar.enable 0
+on property:sys.usb.config=adb
+    # When ADB is enabled, the sys.usb.config is initially set to 'adb' at boot time
+    # This is to prevent it from being enumerated by the Accessory
+    setprop sys.usb.config okcar_usb_none

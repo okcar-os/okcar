@@ -7,6 +7,7 @@ on boot
 on property:sys.usb.config=okcar
     setprop service.okcar.enable 1
     write /sys/class/android_usb/android0/enable 0
+    write /sys/kernel/config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/bDeviceClass 0
     write /config/usb_gadget/g1/bDeviceSubClass 0
     write /config/usb_gadget/g1/bDeviceProtocol 0
@@ -36,9 +37,6 @@ on property:sys.usb.config=okcar
     symlink /config/usb_gadget/g1/functions/okcar_image.gs2 /config/usb_gadget/g1/configs/b.4/okcar_image.gs2
     symlink /config/usb_gadget/g1/functions/okcar_mobile.gs1 /config/usb_gadget/g1/configs/b.4/okcar_mobile.gs1
     symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/okcar_usb_ethernet.gs0
-    write /sys/class/android_usb/android0/functions okcar_image&1,audio_source&2,hid&2,okcar_image&3,okcar_mobile&3,okcar_image&4,okcar_mobile&4,okcar_usb_ethernet&4
-    write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
-    write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
 
@@ -47,6 +45,7 @@ on property:sys.usb.config=okcar,adb
     setprop service.adb.tcp.port 5555
     start adbd
     write /sys/class/android_usb/android0/enable 0
+    write /sys/kernel/config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/bDeviceClass 0
     write /config/usb_gadget/g1/bDeviceSubClass 0
     write /config/usb_gadget/g1/bDeviceProtocol 0
@@ -76,8 +75,22 @@ on property:sys.usb.config=okcar,adb
     symlink /config/usb_gadget/g1/functions/okcar_image.gs2 /config/usb_gadget/g1/configs/b.4/okcar_image.gs2
     symlink /config/usb_gadget/g1/functions/okcar_mobile.gs1 /config/usb_gadget/g1/configs/b.4/okcar_mobile.gs1
     symlink /config/usb_gadget/g1/functions/okcar_usb_ethernet.gs0 /config/usb_gadget/g1/configs/b.4/okcar_usb_ethernet.gs0
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=okcar_usb_none
+    write /sys/class/android_usb/android0/enable 0
+    write /config/usb_gadget/g1/UDC "none"
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:vendor.pc.pccall=udc0
+    write /sys/class/android_usb/android0/enable 0
+    write /config/usb_gadget/g1/UDC "none"
+    setprop vendor.pc.pccall "none"
+
+on property:vendor.pc.pccall=udc1
+    write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/functions okcar_image&1,audio_source&2,hid&2,okcar_image&3,okcar_mobile&3,okcar_image&4,okcar_mobile&4,okcar_usb_ethernet&4
     write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state ${sys.usb.config}
-
+    write /dev/okcar "usbmode,1,1"
+    setprop vendor.pc.pccall "none"
