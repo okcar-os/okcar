@@ -26,6 +26,17 @@ service pccall_i1 /system/bin/pccall -i 1
 	disabled
 	seclabel u:r:okcarte:s0
 
+service pccall_b1 /system/bin/pccall -b 1
+	user system
+    group system root
+	oneshot
+	disabled
+	seclabel u:r:okcarte:s0
+
+on property:vendor.pc.pccall=b1
+    start pccall_b1
+    setprop vendor.pc.pccall none
+
 on property:vendor.pc.pccall=n1
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules cdc_ncm
     chown system system /sys/class/net/usb0/cdc_ncm/min_tx_pkt
@@ -39,9 +50,18 @@ on property:vendor.pc.pccall=n0
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -r -d /vendor/lib/modules cdc_ncm
     setprop vendor.pc.pccall none
 
+
 on property:sys.usb.config=none
     setprop service.okcar.enable 0
+
+
 on property:sys.usb.config=adb
     # When ADB is enabled, the sys.usb.config is initially set to 'adb' at boot time
     # This is to prevent it from being enumerated by the Accessory
     setprop sys.usb.config okcar_usb_none
+
+on charger
+    # This is to prevent it from being enumerated by the Accessory when power off
+    setprop sys.usb.config okcar_usb_none
+    wait /metadata/bootstat
+    start pccall_b1

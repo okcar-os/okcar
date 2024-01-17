@@ -9,3 +9,5 @@ void ipRuleConfig(int b);
 // dmesg > /sdcard/1.txt
 void dmesg();
 
+
+void bootWhenCharge(int b);

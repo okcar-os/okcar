@@ -50,3 +50,21 @@ allow system_app vendor_sysfs_usb_node:dir r_dir_perms;
 
 # autoconn /proc/sys/net/core/wmem_max read
 allow system_app { proc_net }:file rw_file_perms;
+
+# autoconn rw /metadata/bootstat/charger_wake_time\char_wake_enable
+allow system_app metadata_file:dir rw_dir_perms;
+allow system_app metadata_bootstat_file:dir rw_dir_perms;
+allow system_app metadata_bootstat_file:file { rw_file_perms create };
+
+# pccall /metadata/bootstat/charger_wake_time
+allow okcarte metadata_file:dir rw_dir_perms;
+allow okcarte metadata_bootstat_file:dir rw_dir_perms;
+allow okcarte metadata_bootstat_file:file { rw_file_perms create };
+
+# autoconn /sys/class/power_supply/usb/online
+allow system_app vendor_sysfs_usb_supply:dir r_dir_perms;
+allow system_app vendor_sysfs_usb_supply:file r_file_perms;
+
+# pccall setprop sys.powerctl
+allow okcarte init:unix_stream_socket connectto;
+set_prop(okcarte, powerctl_prop)

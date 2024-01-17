@@ -12,4 +12,4 @@ LOCAL_SHARED_LIBRARIES := liblog
 include $(BUILD_EXECUTABLE)
 
 # test
-# make pccall && adb push out/target/product/dipper/system/bin/pccall /data/local/tmp/ && adb shell /data/local/tmp/pccall -m 1
+# mm pccall && adb push out/target/product/dipper/system/bin/pccall /data/local/tmp/ && adb shell /data/local/tmp/pccall -m 1

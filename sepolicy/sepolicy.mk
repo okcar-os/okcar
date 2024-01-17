@@ -6,7 +6,8 @@ endif
 
 ifneq (,$(filter universal9820, $(TARGET_BOARD_PLATFORM)))
     BOARD_VENDOR_SEPOLICY_DIRS += \
-        okcar/sepolicy/vendor_sysfs_usb
+        okcar/sepolicy/vendor_sysfs_usb \
+        okcar/sepolicy/universal9820
 endif
 
 ifneq (,$(filter mt6771, $(TARGET_BOARD_PLATFORM)))
