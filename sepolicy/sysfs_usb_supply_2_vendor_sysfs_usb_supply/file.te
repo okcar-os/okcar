@@ -1,0 +1,1 @@
+typealias sysfs_usb_supply alias vendor_sysfs_usb_supply;
