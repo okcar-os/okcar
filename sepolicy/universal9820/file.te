@@ -1,1 +1,3 @@
 typealias sysfs_battery alias vendor_sysfs_usb_supply;
+
+allow vendor_init okcarapi_device:chr_file rw_file_perms;

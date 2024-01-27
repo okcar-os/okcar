@@ -88,6 +88,7 @@ on property:vendor.pc.pccall=udc0
     setprop vendor.pc.pccall "none"
 
 on property:vendor.pc.pccall=udc1
+    write /dev/okcar "usbmode,1,0"
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/functions okcar_image&1,audio_source&2,hid&2,okcar_image&3,okcar_mobile&3,okcar_image&4,okcar_mobile&4,okcar_usb_ethernet&4
     write /sys/kernel/config/usb_gadget/g1/UDC ${sys.usb.controller}
