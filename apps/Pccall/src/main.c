@@ -79,18 +79,22 @@ int readFileContentAsInt(const char *filePath) {
 
 void bootWhenCharge(int b) {
     if (b == 1) {
-        if (readFileContentAsInt("/metadata/bootstat/charger_wake_enable") != 1) {
-            return;
-        }
-        int chargerWakeTime = readFileContentAsInt("/metadata/bootstat/charger_wake_time");
-        if (chargerWakeTime < 0) {
-            chargerWakeTime = 0;
-        }
-        if (chargerWakeTime > 0) {
-            usleep(chargerWakeTime * 1000);
-            ALOGI("Sleep For: %dms\n", chargerWakeTime);
-        }
-        
+        struct stat statbuf;
+
+        // Some devices do not have a metadata partition; these devices boot up automatically by default.
+        if (stat("/metadata/bootstat", &statbuf) == 0 && S_ISDIR(statbuf.st_mode)) {
+            if (readFileContentAsInt("/metadata/bootstat/charger_wake_enable") != 1) {
+                return;
+            }
+            int chargerWakeTime = readFileContentAsInt("/metadata/bootstat/charger_wake_time");
+            if (chargerWakeTime < 0) {
+                chargerWakeTime = 0;
+            }
+            if (chargerWakeTime > 0) {
+                usleep(chargerWakeTime * 1000);
+                ALOGI("Sleep For: %dms\n", chargerWakeTime);
+            }
+        }        
         // OnePlus9 can't read /sys/class/power_supply/usb/online
         // int isCharging = readFileContentAsInt("/sys/class/power_supply/usb/online");
         // ALOGI("Device is charging %d\n", isCharging);

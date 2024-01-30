@@ -63,5 +63,4 @@ on property:sys.usb.config=adb
 on charger
     # This is to prevent it from being enumerated by the Accessory when power off
     setprop sys.usb.config okcar_usb_none
-    wait /metadata/bootstat
     start pccall_b1
